@@ -32,7 +32,7 @@ namespace WpfApplication1
         {
             if (dl.ValidateUser(textBox.Text,passwordBox.Password.ToString()))
             {
-                MessageBox.Show("U nigga rules");
+                MessageBox.Show("Connection succesful");
                 Global.UserID = dl.GetUserID(textBox.Text);
                 Global.Username = textBox.Text;
             }
