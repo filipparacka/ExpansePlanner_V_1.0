@@ -22,7 +22,7 @@ namespace WpfApplication1
     public partial class MainWindow : Window
     {
         DomainLogic dl = new DomainLogic();
-
+        public string Username { get { return Global.Username; } set { value = Global.Username; } }
         public MainWindow()
         {
             InitializeComponent();
@@ -35,6 +35,9 @@ namespace WpfApplication1
                 MessageBox.Show("Connection succesful");
                 Global.UserID = dl.GetUserID(textBox.Text);
                 Global.Username = textBox.Text;
+                Window1 win = new Window1();
+                win.Show();
+                this.Close();
             }
         }
     }

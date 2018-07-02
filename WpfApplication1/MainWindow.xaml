@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
-        Title="MainWindow" Height="217" Width="323">
+        Title="Login" Height="217" Width="323">
     <Grid>
         <Label x:Name="Expense_Planner" Content="Expense Planner" Margin="70,10,72,0" VerticalAlignment="Top" Height="34" RenderTransformOrigin="0.513,0.443" FontFamily="Britannic Bold" FontSize="21.333"/>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="93,61,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="120"/>
