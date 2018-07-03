@@ -6,13 +6,21 @@
         xmlns:local="clr-namespace:WpfApplication1"
         xmlns:DomainClasses="clr-namespace:DomainClasses;assembly=DomainClasses" x:Class="WpfApplication1.Window1"
         mc:Ignorable="d"
-        Title="Window1" Height="300" Width="300">
-    <Grid>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="21,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="93" Text="{Binding Username, StringFormat=Logged as: \{0\}}"
+        Title="Window1" Height="381.47" Width="858.786">
+    <Grid Background="#FFD1D3FF">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="14*"/>
+            <RowDefinition Height="9*"/>
+        </Grid.RowDefinitions>
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" Text="{Binding Username, StringFormat=Logged as: \{0\}}" FontSize="10" FontWeight="Bold"
                    >
             <TextBlock.DataContext>
                 <DomainClasses:ViewModel/>
             </TextBlock.DataContext>
         </TextBlock>
+        <Button x:Name="button" Content="Show Categories" HorizontalAlignment="Left" Margin="10,59,0,0" VerticalAlignment="Top" Width="133"/>
+        <Button x:Name="button1" Content="Add New Category" HorizontalAlignment="Left" Margin="10,94,0,0" VerticalAlignment="Top" Width="133"/>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="271,59,0,0" VerticalAlignment="Top" Height="219" Width="526" Grid.RowSpan="2"/>
+        <Button x:Name="button2" Content="Add New Entry" HorizontalAlignment="Left" Margin="10,155,0,0" VerticalAlignment="Top" Width="133"/>
     </Grid>
 </Window>

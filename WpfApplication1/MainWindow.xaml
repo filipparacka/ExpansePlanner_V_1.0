@@ -5,18 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
-        Title="Login" Height="217" Width="323">
-    <Grid>
+        Title="Login" Height="227.399" Width="323">
+    <Grid Background="#FFD1D3FF" Margin="0,0,0,-1">
         <Label x:Name="Expense_Planner" Content="Expense Planner" Margin="70,10,72,0" VerticalAlignment="Top" Height="34" RenderTransformOrigin="0.513,0.443" FontFamily="Britannic Bold" FontSize="21.333"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="93,61,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="120"/>
-        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="93,102,0,0" VerticalAlignment="Top" Width="120" Height="25" />
-        <Button x:Name="button" Content="Login" HorizontalAlignment="Left" Margin="93,140,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.494,-0.013" BorderBrush="#FF0097FF" Foreground="White" FontSize="14.667" Cursor="Hand" Click="button_Click">
-            <Button.OpacityMask>
-                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
-                    <GradientStop Color="Black" Offset="0"/>
-                    <GradientStop Color="#FF00AEFF" Offset="1"/>
-                </LinearGradientBrush>
-            </Button.OpacityMask>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="93,55,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="120"/>
+        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="93,91,0,0" VerticalAlignment="Top" Width="120" Height="25" />
+        <Button x:Name="button" Content="Login" HorizontalAlignment="Left" Margin="93,128,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.494,-0.013" BorderBrush="#FF0097FF" Foreground="White" FontSize="14.667" Cursor="Hand" Click="button_Click">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFF3F3F3" Offset="0"/>
@@ -25,6 +19,28 @@
                     <GradientStop Color="{DynamicResource {x:Static SystemColors.HighlightColorKey}}" Offset="1"/>
                 </LinearGradientBrush>
             </Button.Background>
+            <Button.OpacityMask>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FF00AEFF" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.OpacityMask>
+        </Button>
+        <Button x:Name="button1" Content="Create New User" HorizontalAlignment="Left" Margin="93,166,0,0" VerticalAlignment="Top" Width="120" Cursor="Hand" Foreground="White" Click="button1_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFF3F3F3" Offset="0"/>
+                    <GradientStop Color="#FFEBEBEB"/>
+                    <GradientStop Color="#FF246FB9"/>
+                    <GradientStop Color="{DynamicResource {x:Static SystemColors.HighlightColorKey}}" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+            <Button.OpacityMask>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black" Offset="0"/>
+                    <GradientStop Color="#FF00AEFF" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.OpacityMask>
         </Button>
     </Grid>
 </Window>

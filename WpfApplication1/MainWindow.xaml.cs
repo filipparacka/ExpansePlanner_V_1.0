@@ -22,7 +22,6 @@ namespace WpfApplication1
     public partial class MainWindow : Window
     {
         DomainLogic dl = new DomainLogic();
-        public string Username { get { return Global.Username; } set { value = Global.Username; } }
         public MainWindow()
         {
             InitializeComponent();
@@ -39,6 +38,12 @@ namespace WpfApplication1
                 win.Show();
                 this.Close();
             }
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            NewUser win = new NewUser();
+            win.Show();
         }
     }
 }
