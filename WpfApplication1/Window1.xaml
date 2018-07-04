@@ -6,21 +6,63 @@
         xmlns:local="clr-namespace:WpfApplication1"
         xmlns:DomainClasses="clr-namespace:DomainClasses;assembly=DomainClasses" x:Class="WpfApplication1.Window1"
         mc:Ignorable="d"
-        Title="Window1" Height="381.47" Width="858.786">
+        Title="Window1" Height="464.47" Width="1105.786">
     <Grid Background="#FFD1D3FF">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="108*"/>
+            <ColumnDefinition Width="743*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="14*"/>
-            <RowDefinition Height="9*"/>
+            <RowDefinition/>
+            <RowDefinition Height="0*"/>
         </Grid.RowDefinitions>
-        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" Text="{Binding Username, StringFormat=Logged as: \{0\}}" FontSize="10" FontWeight="Bold"
+        <TextBlock x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" Text="{Binding Username, StringFormat=Logged in as: \{0\}}" FontSize="10" FontWeight="Bold" Height="16" Margin="10,0,0,0" Grid.ColumnSpan="2"
                    >
             <TextBlock.DataContext>
                 <DomainClasses:ViewModel/>
             </TextBlock.DataContext>
         </TextBlock>
-        <Button x:Name="button" Content="Show Categories" HorizontalAlignment="Left" Margin="10,59,0,0" VerticalAlignment="Top" Width="133"/>
-        <Button x:Name="button1" Content="Add New Category" HorizontalAlignment="Left" Margin="10,94,0,0" VerticalAlignment="Top" Width="133"/>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="271,59,0,0" VerticalAlignment="Top" Height="219" Width="526" Grid.RowSpan="2"/>
-        <Button x:Name="button2" Content="Add New Entry" HorizontalAlignment="Left" Margin="10,155,0,0" VerticalAlignment="Top" Width="133"/>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="425,37,0,0" VerticalAlignment="Top" Height="250" Width="499" Grid.Column="1"/>
+        <GroupBox x:Name="groupBox" Header="Add new Expense Category&#xD;&#xA;" HorizontalAlignment="Left" Margin="10,21,0,0" VerticalAlignment="Top" Height="110" Width="241" FontWeight="Bold" FontSize="14" Background="#FFFFF5CA" Grid.ColumnSpan="2">
+            <Grid HorizontalAlignment="Left" Height="47" Margin="0,20,0,0" VerticalAlignment="Top" Width="213">
+                <Button x:Name="button" Content="Show Categories" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="123" Click="button_Click"/>
+                <Button x:Name="button1" Content="Add" HorizontalAlignment="Left" Margin="152,10,0,0" VerticalAlignment="Top" Width="51" Height="25" Click="button1_Click"/>
+            </Grid>
+        </GroupBox>
+        <TextBlock x:Name="textBlock2" Margin="25,54,32,0" TextWrapping="Wrap" Text="Category:" VerticalAlignment="Top" Height="16"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="94,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Grid.ColumnSpan="2"/>
+        <GroupBox x:Name="groupBox_Copy" Header="Add new Income Category&#xA;" HorizontalAlignment="Left" Margin="153,21,0,0" VerticalAlignment="Top" Height="110" Width="241" FontWeight="Bold" FontSize="14" Background="#FFFFF5CA" Grid.Column="1">
+            <Grid HorizontalAlignment="Left" Height="47" Margin="10,21,0,-2" VerticalAlignment="Top" Width="213">
+                <Button x:Name="button2" Content="Show Categories" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="123" Click="button_Click"/>
+                <Button x:Name="button3" Content="Add" HorizontalAlignment="Left" Margin="141,10,0,0" VerticalAlignment="Top" Width="51" Height="25"/>
+            </Grid>
+        </GroupBox>
+        <TextBlock x:Name="textBlock2_Copy" Margin="170,54,522,0" TextWrapping="Wrap" Text="Category:" VerticalAlignment="Top" Height="16" Grid.Column="1"/>
+        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="23" Margin="239,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Grid.Column="1"/>
+        <GroupBox x:Name="groupBox_Copy1" Header="Add new Expense Item&#xA;" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top" Height="239" Width="241" FontWeight="Bold" FontSize="14" Background="#FFFFF5CA" Grid.ColumnSpan="2">
+            <Grid HorizontalAlignment="Left" Height="180" Margin="10,-12,0,0" VerticalAlignment="Top" Width="212">
+                <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Date:" VerticalAlignment="Top" FontWeight="Normal" FontSize="12" Width="30" Margin="0,10,0,0"/>
+                <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="0,50,0,0" TextWrapping="Wrap" Text="Category:" VerticalAlignment="Top" FontSize="12" FontWeight="Normal"/>
+                <DatePicker x:Name="datepick"  HorizontalAlignment="Left" Margin="72,7,0,0" VerticalAlignment="Top" Width="130"/>
+                <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="72,50,0,0" VerticalAlignment="Top" Width="130"/>
+                <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="0,90,0,0" TextWrapping="Wrap" Text="Description:" VerticalAlignment="Top" FontWeight="Normal" FontSize="12"/>
+                <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="72,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" FontSize="12" FontWeight="Normal"/>
+                <TextBlock x:Name="textBlock5" HorizontalAlignment="Left" Margin="0,131,0,0" TextWrapping="Wrap" Text="Cost:" VerticalAlignment="Top" FontWeight="Normal" FontSize="12"/>
+                <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="23" Margin="72,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" FontSize="12" FontWeight="Normal"/>
+                <Button x:Name="button4" Content="Add" HorizontalAlignment="Left" Margin="127,169,0,-16" VerticalAlignment="Top" Width="75" Height="27" Click="button4_Click"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox x:Name="groupBox_Copy2" Header="Add new Income Item&#xA;" HorizontalAlignment="Left" Margin="153,148,0,0" VerticalAlignment="Top" Height="194" Width="241" FontWeight="Bold" FontSize="14" Background="#FFFFF5CA" Grid.Column="1">
+            <Grid HorizontalAlignment="Left" Height="180" Margin="10,-12,0,0" VerticalAlignment="Top" Width="212">
+                <TextBlock x:Name="textBlock6" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Date:" VerticalAlignment="Top" FontWeight="Normal" FontSize="12" Width="30" Margin="0,10,0,0"/>
+                <TextBlock x:Name="textBlock7" HorizontalAlignment="Left" Margin="0,50,0,0" TextWrapping="Wrap" Text="Category:" VerticalAlignment="Top" FontSize="12" FontWeight="Normal"/>
+                <DatePicker HorizontalAlignment="Left" Margin="72,7,0,0" VerticalAlignment="Top" Width="130"/>
+                <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="72,50,0,0" VerticalAlignment="Top" Width="130"/>
+                <TextBlock x:Name="textBlock8" HorizontalAlignment="Left" Margin="0,90,0,0" TextWrapping="Wrap" Text="Description:" VerticalAlignment="Top" FontWeight="Normal" FontSize="12"/>
+                <TextBox x:Name="textBox3" HorizontalAlignment="Left" Height="23" Margin="72,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" FontSize="12" FontWeight="Normal"/>
+                <TextBlock x:Name="textBlock9" HorizontalAlignment="Left" Margin="0,131,0,0" TextWrapping="Wrap" Text="Cost:" VerticalAlignment="Top" FontWeight="Normal" FontSize="12"/>
+                <TextBox x:Name="textBox4" HorizontalAlignment="Left" Height="23" Margin="72,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" FontSize="12" FontWeight="Normal"/>
+            </Grid>
+        </GroupBox>
     </Grid>
 </Window>

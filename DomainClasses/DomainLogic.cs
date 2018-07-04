@@ -46,5 +46,35 @@ namespace DomainClasses
                 return result;
             }
         }
+
+        public IEnumerable<string> GetCategories()
+        {
+            using (var context = new ExpenseEntities())
+            {
+                var result = context.CATEGORY.Select(x => x.CATEGORYNAME).ToList();
+                return result;
+            }
+        }
+
+        public void CreateNewCategory(string name)
+        {
+            using (var context = new ExpenseEntities())
+            {
+                CATEGORY category = new CATEGORY() { CATEGORYNAME = name};
+                context.CATEGORY.Add(category);
+                context.SaveChanges();
+            }
+        }
+
+        public void CreateNewExpense(string description, DateTime date, string category, decimal price)
+        {
+            using (var context = new ExpenseEntities() )
+            {
+                CATEGORY cat = context.CATEGORY.Where(x => x.CATEGORYNAME == category).FirstOrDefault();
+                EXPENSES expense = new EXPENSES() { DESCRIPTION = description, Date = date, PRICE = price, CATEGORY = cat};
+                context.EXPENSES.Add(expense);
+                context.SaveChanges();
+            }
+        }
     }
 }

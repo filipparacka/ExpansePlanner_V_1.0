@@ -19,7 +19,7 @@ namespace DomainClasses
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<CATEGORY>()
-                .Property(e => e.ID);
+                .HasKey<int>(e => e.ID);
 
             modelBuilder.Entity<CATEGORY>()
                 .Property(e => e.CATEGORYNAME)
@@ -32,7 +32,7 @@ namespace DomainClasses
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<EXPENSES>()
-                .Property(e => e.ID);
+                .HasKey<int>(e => e.ID);
 
             modelBuilder.Entity<EXPENSES>()
                 .Property(e => e.DESCRIPTION)

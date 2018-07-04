@@ -9,7 +9,21 @@ namespace DomainClasses
     public class ViewModel
     {
 
+        DomainLogic dl = new DomainLogic();
+
         public string Username { get; set; }
+
+        public IEnumerable<string> Categories
+        {
+            get
+            {
+                return dl.GetCategories();
+            }
+            set
+            {
+                value = dl.GetCategories();
+            }
+        }
 
         public ViewModel()
         {

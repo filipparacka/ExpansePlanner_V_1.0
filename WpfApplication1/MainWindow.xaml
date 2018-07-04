@@ -5,12 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
-        Title="Login" Height="227.399" Width="323">
+        Title="Login" Height="227.399" Width="323"
+        KeyDown="OnKeyDownHandler">
     <Grid Background="#FFD1D3FF" Margin="0,0,0,-1">
         <Label x:Name="Expense_Planner" Content="Expense Planner" Margin="70,10,72,0" VerticalAlignment="Top" Height="34" RenderTransformOrigin="0.513,0.443" FontFamily="Britannic Bold" FontSize="21.333"/>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="93,55,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="120"/>
         <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="93,91,0,0" VerticalAlignment="Top" Width="120" Height="25" />
-        <Button x:Name="button" Content="Login" HorizontalAlignment="Left" Margin="93,128,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.494,-0.013" BorderBrush="#FF0097FF" Foreground="White" FontSize="14.667" Cursor="Hand" Click="button_Click">
+        <Button x:Name="button" Content="Login" HorizontalAlignment="Left" Margin="93,128,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.494,-0.013" BorderBrush="#FF0097FF" Foreground="White" FontSize="14.667" Cursor="Hand" Click="button_Click" >
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFF3F3F3" Offset="0"/>

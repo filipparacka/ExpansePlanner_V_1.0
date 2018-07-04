@@ -38,12 +38,25 @@ namespace WpfApplication1
                 win.Show();
                 this.Close();
             }
+            else
+            {
+                MessageBox.Show("Wrong Username or password!");
+            }
+            
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
             NewUser win = new NewUser();
             win.Show();
+        }
+
+        private void OnKeyDownHandler(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                button_Click(this, null);
+            }
         }
     }
 }

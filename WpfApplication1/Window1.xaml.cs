@@ -20,11 +20,36 @@ namespace WpfApplication1
     /// </summary>
     public partial class Window1 : Window
     {
-        
+        DomainLogic dl = new DomainLogic();
         public Window1()
         {
             InitializeComponent();
 
         }
+
+        private void button_Click(object sender, RoutedEventArgs e)
+        {
+            Categories cat = new Categories();
+            cat.Show();
+        }
+
+        private void button1_Click(object sender, RoutedEventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(textBox.Text))
+            {
+                dl.CreateNewCategory(textBox.Text);
+            }
+            else
+            {
+                MessageBox.Show("Enter category!");
+            }
+        }
+
+        private void button4_Click(object sender, RoutedEventArgs e)
+        {
+            //dl.CreateNewExpense(textBox1.Text,datepick.DisplayDate,)
+        }
+
+        
     }
 }

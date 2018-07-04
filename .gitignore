@@ -210,3 +210,8 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+/DomainClasses/Migrations/Configuration.cs
+/DomainClasses/Migrations/201807041158084_abc.resx
+/DomainClasses/Migrations/201807041158084_abc.Designer.cs
+/DomainClasses/Migrations/201807041158084_abc.cs
+/DomainClasses/Migrations
