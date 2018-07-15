@@ -22,7 +22,11 @@
                 <DomainClasses:ViewModel/>
             </TextBlock.DataContext>
         </TextBlock>
-        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="425,37,0,0" VerticalAlignment="Top" Height="250" Width="499" Grid.Column="1"/>
+        <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="425,41,0,0" VerticalAlignment="Top" Height="250" Width="509" Grid.Column="1" ItemsSource="{Binding AllExpenses}" Background="#FFD6FFCA">
+            <DataGrid.DataContext>
+                <DomainClasses:ViewModel/>
+            </DataGrid.DataContext>
+        </DataGrid>
         <GroupBox x:Name="groupBox" Header="Add new Expense Category&#xD;&#xA;" HorizontalAlignment="Left" Margin="10,21,0,0" VerticalAlignment="Top" Height="110" Width="241" FontWeight="Bold" FontSize="14" Background="#FFFFF5CA" Grid.ColumnSpan="2">
             <Grid HorizontalAlignment="Left" Height="47" Margin="0,20,0,0" VerticalAlignment="Top" Width="213">
                 <Button x:Name="button" Content="Show Categories" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="123" Click="button_Click"/>
@@ -44,25 +48,35 @@
                 <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Date:" VerticalAlignment="Top" FontWeight="Normal" FontSize="12" Width="30" Margin="0,10,0,0"/>
                 <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="0,50,0,0" TextWrapping="Wrap" Text="Category:" VerticalAlignment="Top" FontSize="12" FontWeight="Normal"/>
                 <DatePicker x:Name="datepick"  HorizontalAlignment="Left" Margin="72,7,0,0" VerticalAlignment="Top" Width="130"/>
-                <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="72,50,0,0" VerticalAlignment="Top" Width="130"/>
+                <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="72,50,0,0" VerticalAlignment="Top" Width="130" ItemsSource="{Binding ExpenseCategories}">
+                    <ComboBox.DataContext>
+                        <DomainClasses:ViewModel/>
+                    </ComboBox.DataContext>
+                </ComboBox>
                 <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="0,90,0,0" TextWrapping="Wrap" Text="Description:" VerticalAlignment="Top" FontWeight="Normal" FontSize="12"/>
                 <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="72,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" FontSize="12" FontWeight="Normal"/>
                 <TextBlock x:Name="textBlock5" HorizontalAlignment="Left" Margin="0,131,0,0" TextWrapping="Wrap" Text="Cost:" VerticalAlignment="Top" FontWeight="Normal" FontSize="12"/>
                 <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="23" Margin="72,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" FontSize="12" FontWeight="Normal"/>
-                <Button x:Name="button4" Content="Add" HorizontalAlignment="Left" Margin="127,169,0,-16" VerticalAlignment="Top" Width="75" Height="27" Click="button4_Click"/>
+                <Button x:Name="button4" Content="Add" HorizontalAlignment="Left" Margin="127,169,0,-16" Width="75" Click="button4_Click"/>
             </Grid>
         </GroupBox>
-        <GroupBox x:Name="groupBox_Copy2" Header="Add new Income Item&#xA;" HorizontalAlignment="Left" Margin="153,148,0,0" VerticalAlignment="Top" Height="194" Width="241" FontWeight="Bold" FontSize="14" Background="#FFFFF5CA" Grid.Column="1">
+        <GroupBox x:Name="groupBox_Copy2" Header="Add new Income Item&#xA;" HorizontalAlignment="Left" Margin="153,148,0,0" VerticalAlignment="Top" Height="239" Width="241" FontWeight="Bold" FontSize="14" Background="#FFFFF5CA" Grid.Column="1">
             <Grid HorizontalAlignment="Left" Height="180" Margin="10,-12,0,0" VerticalAlignment="Top" Width="212">
                 <TextBlock x:Name="textBlock6" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Date:" VerticalAlignment="Top" FontWeight="Normal" FontSize="12" Width="30" Margin="0,10,0,0"/>
                 <TextBlock x:Name="textBlock7" HorizontalAlignment="Left" Margin="0,50,0,0" TextWrapping="Wrap" Text="Category:" VerticalAlignment="Top" FontSize="12" FontWeight="Normal"/>
                 <DatePicker HorizontalAlignment="Left" Margin="72,7,0,0" VerticalAlignment="Top" Width="130"/>
-                <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="72,50,0,0" VerticalAlignment="Top" Width="130"/>
+                <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="72,50,0,0" VerticalAlignment="Top" Width="130" ItemsSource="{Binding IncomeCategories}">
+                    <ComboBox.DataContext>
+                        <DomainClasses:ViewModel/>
+                    </ComboBox.DataContext>
+                </ComboBox>
                 <TextBlock x:Name="textBlock8" HorizontalAlignment="Left" Margin="0,90,0,0" TextWrapping="Wrap" Text="Description:" VerticalAlignment="Top" FontWeight="Normal" FontSize="12"/>
                 <TextBox x:Name="textBox3" HorizontalAlignment="Left" Height="23" Margin="72,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" FontSize="12" FontWeight="Normal"/>
                 <TextBlock x:Name="textBlock9" HorizontalAlignment="Left" Margin="0,131,0,0" TextWrapping="Wrap" Text="Cost:" VerticalAlignment="Top" FontWeight="Normal" FontSize="12"/>
                 <TextBox x:Name="textBox4" HorizontalAlignment="Left" Height="23" Margin="72,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" FontSize="12" FontWeight="Normal"/>
+                <Button x:Name="button4_Copy" Content="Add" HorizontalAlignment="Left" Margin="127,170,0,-17" Width="75" Click="button4_Click"/>
             </Grid>
         </GroupBox>
+        <Button x:Name="button5" Content="Show Monthly Expenses and Incomes" Grid.Column="1" HorizontalAlignment="Left" Margin="425,311,0,0" VerticalAlignment="Top" Width="225" FontWeight="Bold" Click="button5_Click"/>
     </Grid>
 </Window>

@@ -8,7 +8,7 @@ namespace DomainClasses
 {
     public static class Global
     {
-        public static decimal UserID;
+        public static int UserID;
         public static string Username;
     }
 }

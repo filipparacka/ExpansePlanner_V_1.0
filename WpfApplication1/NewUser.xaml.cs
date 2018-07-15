@@ -34,6 +34,7 @@ namespace WpfApplication1
                 {
                     dl.CreateNewUser(textBox.Text, passwordBox.Password);
                     MessageBox.Show("User successfully created", "User created", MessageBoxButton.OK, MessageBoxImage.Information);
+                    this.Close();
                 }
                 else
                 {

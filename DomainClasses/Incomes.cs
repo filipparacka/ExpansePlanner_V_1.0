@@ -6,8 +6,8 @@ namespace DomainClasses
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("SYSTEM.EXPENSES")]
-    public partial class Expenses
+    [Table("SYSTEM.INCOMES")]
+    public partial class Incomes
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
@@ -19,13 +19,13 @@ namespace DomainClasses
         [Column(TypeName = "float")]
         public decimal? Price { get; set; }
 
-        public DateTime Date { get; set; }
+        public DateTime? Date { get; set; }
 
         public int Users_ID { get; set; }
 
         public int Category_ID { get; set; }
 
-        public virtual ExpenseCategory Category { get; set; }
+        public virtual IncomeCategory Category { get; set; }
 
         public virtual Users Users { get; set; }
     }

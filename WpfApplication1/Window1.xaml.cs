@@ -24,12 +24,12 @@ namespace WpfApplication1
         public Window1()
         {
             InitializeComponent();
-
         }
 
         private void button_Click(object sender, RoutedEventArgs e)
         {
             Categories cat = new Categories();
+            dl.SumMonthlyExpanses();
             cat.Show();
         }
 
@@ -47,9 +47,14 @@ namespace WpfApplication1
 
         private void button4_Click(object sender, RoutedEventArgs e)
         {
-            //dl.CreateNewExpense(textBox1.Text,datepick.DisplayDate,)
+            dl.CreateNewExpense(textBox1.Text, (DateTime)datepick.SelectedDate, comboBox.Text, Convert.ToDecimal(textBox2.Text));
+            MessageBox.Show("New Expense Added!");
+            dataGrid.ItemsSource = dl.GetAllExpenses();
         }
 
-        
+        private void button5_Click(object sender, RoutedEventArgs e)
+        {
+            dataGrid.ItemsSource = dl.SumMonthlyExpanses();
+        }
     }
 }

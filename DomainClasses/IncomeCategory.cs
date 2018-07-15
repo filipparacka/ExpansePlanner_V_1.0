@@ -6,13 +6,12 @@ namespace DomainClasses
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("SYSTEM.USERS")]
-    public partial class Users
+    [Table("SYSTEM.Income_CATEGORY")]
+    public partial class IncomeCategory
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Users()
+        public IncomeCategory()
         {
-            Expenses = new HashSet<Expenses>();
             Incomes = new HashSet<Incomes>();
         }
 
@@ -22,14 +21,7 @@ namespace DomainClasses
 
         [Required]
         [StringLength(50)]
-        public string Name { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        public string Password { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Expenses> Expenses { get; set; }
+        public string CategoryName { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Incomes> Incomes { get; set; }

@@ -6,24 +6,24 @@ namespace DomainClasses
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("SYSTEM.CATEGORY")]
-    public partial class CATEGORY
+    [Table("SYSTEM.EXPENSE_CATEGORY")]
+    public partial class ExpenseCategory
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CATEGORY()
+        public ExpenseCategory()
         {
-            EXPENSES = new HashSet<EXPENSES>();
+            Expenses = new HashSet<Expenses>();
         }
 
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [Required]
         [StringLength(50)]
-        public string CATEGORYNAME { get; set; }
+        public string CategoryName { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<EXPENSES> EXPENSES { get; set; }
+        public virtual ICollection<Expenses> Expenses { get; set; }
     }
 }

@@ -10,18 +10,39 @@ namespace DomainClasses
     {
 
         DomainLogic dl = new DomainLogic();
+        ExpenseBO expense = new ExpenseBO();
 
         public string Username { get; set; }
 
-        public IEnumerable<string> Categories
+        public IEnumerable<string> ExpenseCategories
         {
             get
             {
-                return dl.GetCategories();
+                return dl.GetExpenseCategories();
             }
             set
             {
-                value = dl.GetCategories();
+                value = dl.GetExpenseCategories();
+            }
+        }
+
+        public IEnumerable<string> IncomeCategories
+        {
+            get
+            {
+                return dl.GetIncomeCategories();
+            }
+            set
+            {
+                value = dl.GetIncomeCategories();
+            }
+        }
+
+        public IEnumerable<ExpenseBO> AllExpenses
+        {
+            get
+            {
+                return dl.GetAllExpenses();
             }
         }
 

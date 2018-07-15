@@ -63,19 +63,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CATEGORY.cs" />
+    <Compile Include="IncomeCategory.cs" />
+    <Compile Include="ExpenseCategory.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="DomainLogic.cs" />
-    <Compile Include="EXPENSES.cs" />
+    <Compile Include="Incomes.cs" />
+    <Compile Include="Expenses.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="ExpenseEntities.cs" />
-    <Compile Include="Migrations\201807041158084_abc.cs" />
-    <Compile Include="Migrations\201807041158084_abc.Designer.cs">
-      <DependentUpon>201807041158084_abc.cs</DependentUpon>
+    <Compile Include="Migrations\201807061347305_abc.cs" />
+    <Compile Include="Migrations\201807061347305_abc.Designer.cs">
+      <DependentUpon>201807061347305_abc.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="USERS.cs" />
+    <Compile Include="Users.cs" />
     <Compile Include="ViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -86,8 +88,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201807041158084_abc.resx">
-      <DependentUpon>201807041158084_abc.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201807061347305_abc.resx">
+      <DependentUpon>201807061347305_abc.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

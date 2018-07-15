@@ -12,58 +12,94 @@ namespace DomainClasses
         {
         }
 
-        public virtual DbSet<CATEGORY> CATEGORY { get; set; }
-        public virtual DbSet<EXPENSES> EXPENSES { get; set; }
-        public virtual DbSet<USERS> USERS { get; set; }
+        public virtual DbSet<ExpenseCategory> ExpenseCategory { get; set; }
+        public virtual DbSet<Expenses> Expenses { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<Incomes> Incomes { get; set; }
+        public virtual DbSet<IncomeCategory> Incomecategory { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<CATEGORY>()
-                .HasKey<int>(e => e.ID);
+            modelBuilder.Entity<ExpenseCategory>()
+                .HasKey<int>(e => e.Id);
 
-            modelBuilder.Entity<CATEGORY>()
-                .Property(e => e.CATEGORYNAME)
+            modelBuilder.Entity<ExpenseCategory>()
+                .Property(e => e.CategoryName)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<CATEGORY>()
-                .HasMany(e => e.EXPENSES)
-                .WithRequired(e => e.CATEGORY)
-                .HasForeignKey(e => e.CATEGORY_ID)
+            modelBuilder.Entity<ExpenseCategory>()
+                .HasMany(e => e.Expenses)
+                .WithRequired(e => e.Category)
+                .HasForeignKey(e => e.Category_ID)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<EXPENSES>()
-                .HasKey<int>(e => e.ID);
+            modelBuilder.Entity<Expenses>()
+                .HasKey<int>(e => e.Id);
 
-            modelBuilder.Entity<EXPENSES>()
-                .Property(e => e.DESCRIPTION)
+            modelBuilder.Entity<Expenses>()
+                .Property(e => e.Description)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<EXPENSES>()
-                .Property(e => e.PRICE)
-                .HasPrecision(1, 0);
+            modelBuilder.Entity<Expenses>()
+                .Property(e => e.Price);
 
-            modelBuilder.Entity<EXPENSES>()
-                .Property(e => e.USERS_ID);
+            modelBuilder.Entity<Expenses>()
+                .Property(e => e.Users_ID);
 
-            modelBuilder.Entity<EXPENSES>()
-                .Property(e => e.CATEGORY_ID);
+            modelBuilder.Entity<Expenses>()
+                .Property(e => e.Category_ID);
 
-            modelBuilder.Entity<USERS>()
-                .HasKey<int>(e => e.ID);
+            modelBuilder.Entity<Users>()
+                .HasKey<int>(e => e.Id);
 
-            modelBuilder.Entity<USERS>()
-                .Property(e => e.NAME)
+            modelBuilder.Entity<Users>()
+                .Property(e => e.Name)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<USERS>()
-                .Property(e => e.PASSWORD)
+            modelBuilder.Entity<Users>()
+                .Property(e => e.Password)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<USERS>()
-                .HasMany(e => e.EXPENSES)
-                .WithRequired(e => e.USERS)
-                .HasForeignKey(e => e.USERS_ID)
+            modelBuilder.Entity<Users>()
+                .HasMany(e => e.Expenses)
+                .WithRequired(e => e.Users)
+                .HasForeignKey(e => e.Users_ID)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Users>()
+               .HasMany(e => e.Incomes)
+               .WithRequired(e => e.Users)
+               .HasForeignKey(e => e.Users_ID)
+               .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<IncomeCategory>()
+               .HasKey<int>(e => e.Id);
+
+            modelBuilder.Entity<IncomeCategory>()
+                .Property(e => e.CategoryName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<IncomeCategory>()
+                .HasMany(e => e.Incomes)
+                .WithRequired(e => e.Category)
+                .HasForeignKey(e => e.Category_ID)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Incomes>()
+                .HasKey<int>(e => e.Id);
+
+            modelBuilder.Entity<Incomes>()
+                .Property(e => e.Description)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<Incomes>()
+                .Property(e => e.Price);
+
+            modelBuilder.Entity<Incomes>()
+                .Property(e => e.Users_ID);
+
+            modelBuilder.Entity<Incomes>()
+                .Property(e => e.Category_ID);
         }
     }
 }
