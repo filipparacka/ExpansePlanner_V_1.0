@@ -3,15 +3,18 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:fa="http://schemas.fontawesome.io/icons/"
         xmlns:local="clr-namespace:WpfApplication1"
         mc:Ignorable="d"
-        Title="Login" Height="227.399" Width="323"
-        KeyDown="OnKeyDownHandler">
-    <Grid Background="#FFD1D3FF" Margin="0,0,0,-1">
-        <Label x:Name="Expense_Planner" Content="Expense Planner" Margin="70,10,72,0" VerticalAlignment="Top" Height="34" RenderTransformOrigin="0.513,0.443" FontFamily="Britannic Bold" FontSize="21.333"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="93,55,0,0" TextWrapping="Wrap" Text="Name" VerticalAlignment="Top" Width="120"/>
-        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="93,91,0,0" VerticalAlignment="Top" Width="120" Height="25" />
-        <Button x:Name="button" Content="Login" HorizontalAlignment="Left" Margin="93,128,0,0" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.494,-0.013" BorderBrush="#FF0097FF" Foreground="White" FontSize="14.667" Cursor="Hand" Click="button_Click" >
+        Title="{DynamicResource Login}" Height="270.733" Width="447"
+        KeyDown="OnKeyDownHandler" ResizeMode="CanMinimize" Icon="pack://siteoforigin:,,,/Resources/Iconshock-Cms-User-login.ico" ShowInTaskbar="False">
+
+
+    <Grid Name="grid" Background="#FFD1D3FF" Margin="0,0,0,-1" IsEnabled="True">
+        <Label x:Name="Expense_Planner" Content="Expense Planner" Margin="115,10,122,0" VerticalAlignment="Top" Height="34" RenderTransformOrigin="0.513,0.443" FontFamily="Britannic Bold" FontSize="24"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="30" Margin="139,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="133" FontSize="18" Opacity="0.965"/>
+        <PasswordBox x:Name="passwordBox" HorizontalAlignment="Left" Margin="139,100,0,0" VerticalAlignment="Top" Width="133" Height="30" FontSize="18" />
+        <Button x:Name="button" Content="{DynamicResource Login}" HorizontalAlignment="Left" Margin="139,148,0,0" VerticalAlignment="Top" Width="133" RenderTransformOrigin="0.494,-0.013" BorderBrush="#FF0097FF" Foreground="White" FontSize="14.667" Cursor="Hand" Click="button_Click" Height="29" >
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFF3F3F3" Offset="0"/>
@@ -27,7 +30,7 @@
                 </LinearGradientBrush>
             </Button.OpacityMask>
         </Button>
-        <Button x:Name="button1" Content="Create New User" HorizontalAlignment="Left" Margin="93,163,0,0" VerticalAlignment="Top" Width="120" Cursor="Hand" Foreground="White" Click="button1_Click" Height="23">
+        <Button x:Name="button1" Content="{DynamicResource CreateNewUser}" HorizontalAlignment="Left" Margin="139,192,0,0" VerticalAlignment="Top" Width="133" Cursor="Hand" Foreground="White" Click="button1_Click" Height="29">
             <Button.Background>
                 <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
                     <GradientStop Color="#FFF3F3F3" Offset="0"/>
@@ -43,5 +46,22 @@
                 </LinearGradientBrush>
             </Button.OpacityMask>
         </Button>
+        <fa:ImageAwesome x:Name="Loading" Icon="Spinner" Spin="True" SpinDuration="4" Width="150" Height="150" Visibility="Collapsed" />
+        <Grid HorizontalAlignment="Left" Height="90" Margin="313,10,0,0" VerticalAlignment="Top" Width="121">
+            <Image HorizontalAlignment="Left" Height="52" Margin="72,18,0,0" VerticalAlignment="Top" Width="44" Source="Resources/slovakia.png" RenderTransformOrigin="0.69,0.536" MouseDown="Image_MouseDown_1" Cursor="Hand"/>
+            <Image HorizontalAlignment="Left" Height="44" Margin="24,18,0,0" VerticalAlignment="Top" Width="43" Source="Resources/uk.png" MouseDown="Image_MouseDown" Cursor="Hand"/>
+            <Label Content="{DynamicResource Language}" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Margin="24,-8,0,0" VerticalAlignment="Top" FontWeight="Bold" FontFamily="Britannic Bold" FontSize="14" Width="87" RenderTransformOrigin="0.5,0.5">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleY="0.344"/>
+                        <RotateTransform/>
+                        <TranslateTransform Y="0.327"/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+        </Grid>
+        <Label Content="{DynamicResource Username}" HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="77,57,0,0" VerticalAlignment="Top" FontFamily="Britannic Bold" FontSize="18" ContentStringFormat="{}{0}:"/>
+        <Label Content="{DynamicResource Password}"  HorizontalContentAlignment="Right" HorizontalAlignment="Left" Margin="23,100,0,0" VerticalAlignment="Top" Height="30" FontWeight="Bold" FontFamily="Britannic Bold" FontSize="18" RenderTransformOrigin="0.073,0.622" ContentStringFormat="{}{0}:" Width="111"/>
     </Grid>
 </Window>

@@ -4,9 +4,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApplication1"
-        xmlns:DomainClasses="clr-namespace:DomainClasses;assembly=DomainClasses" x:Class="WpfApplication1.Window1"
+        xmlns:DomainClasses="clr-namespace:DomainClasses;assembly=DomainClasses" xmlns:Properties="clr-namespace:WpfApplication1.Properties" x:Class="WpfApplication1.Window1"
         mc:Ignorable="d"
-        Title="Window1" Height="464.47" Width="1105.786">
+        Title="Expense Planner" Height="464.47" Width="1105.786">
+    <Window.Resources>
+        <DomainClasses:ViewModel x:Key="vm" />
+    </Window.Resources>
+    
     <Grid Background="#FFD1D3FF">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="108*"/>
@@ -18,23 +22,18 @@
         </Grid.RowDefinitions>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" TextWrapping="Wrap" VerticalAlignment="Top" Width="132" Text="{Binding Username, StringFormat=Logged in as: \{0\}}" FontSize="10" FontWeight="Bold" Height="16" Margin="10,0,0,0" Grid.ColumnSpan="2"
                    >
-            <TextBlock.DataContext>
-                <DomainClasses:ViewModel/>
-            </TextBlock.DataContext>
         </TextBlock>
         <DataGrid x:Name="dataGrid" HorizontalAlignment="Left" Margin="425,41,0,0" VerticalAlignment="Top" Height="250" Width="509" Grid.Column="1" ItemsSource="{Binding AllExpenses}" Background="#FFD6FFCA">
-            <DataGrid.DataContext>
-                <DomainClasses:ViewModel/>
-            </DataGrid.DataContext>
+            
         </DataGrid>
-        <GroupBox x:Name="groupBox" Header="Add new Expense Category&#xD;&#xA;" HorizontalAlignment="Left" Margin="10,21,0,0" VerticalAlignment="Top" Height="110" Width="241" FontWeight="Bold" FontSize="14" Background="#FFFFF5CA" Grid.ColumnSpan="2">
+        <GroupBox x:Name="groupBox" Header="Add new Expense Category&#xA;" HorizontalAlignment="Left" Margin="10,21,0,0" VerticalAlignment="Top" Height="110" Width="241" FontWeight="Bold" FontSize="14" Background="#FFFFF5CA" Grid.ColumnSpan="2">
             <Grid HorizontalAlignment="Left" Height="47" Margin="0,20,0,0" VerticalAlignment="Top" Width="213">
                 <Button x:Name="button" Content="Show Categories" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="123" Click="button_Click"/>
-                <Button x:Name="button1" Content="Add" HorizontalAlignment="Left" Margin="152,10,0,0" VerticalAlignment="Top" Width="51" Height="25" Click="button1_Click"/>
+                <Button x:Name="button1" HorizontalAlignment="Left" Margin="152,10,0,0" VerticalAlignment="Top" Width="51" Height="25" Content="{DynamicResource Add}" Focusable="False" Command="{Binding AddExpenseCategoryCommand, Source={StaticResource vm}}" IsEnabled="{Binding ElementName=textBox, Path=Text.Length}"/>
             </Grid>
         </GroupBox>
         <TextBlock x:Name="textBlock2" Margin="25,54,32,0" TextWrapping="Wrap" Text="Category:" VerticalAlignment="Top" Height="16"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="94,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="94,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Grid.ColumnSpan="2" Text="{Binding ExpenseCategoryName, Source={StaticResource vm},Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <GroupBox x:Name="groupBox_Copy" Header="Add new Income Category&#xA;" HorizontalAlignment="Left" Margin="153,21,0,0" VerticalAlignment="Top" Height="110" Width="241" FontWeight="Bold" FontSize="14" Background="#FFFFF5CA" Grid.Column="1">
             <Grid HorizontalAlignment="Left" Height="47" Margin="10,21,0,-2" VerticalAlignment="Top" Width="213">
                 <Grid.ColumnDefinitions>
@@ -42,45 +41,54 @@
                     <ColumnDefinition Width="25*"/>
                 </Grid.ColumnDefinitions>
                 <Button x:Name="button2" Content="Show Categories" HorizontalAlignment="Left" Margin="0,10,0,0" VerticalAlignment="Top" Width="123" Click="button_Click"/>
-                <Button x:Name="button3" Content="Add" HorizontalAlignment="Left" Margin="3,10,0,0" VerticalAlignment="Top" Width="51" Height="25" Click="button3_Click" Grid.Column="1"/>
+                <Button x:Name="button3" Content="{DynamicResource Add}" HorizontalAlignment="Left" Margin="3,10,0,0" VerticalAlignment="Top" Width="51" Height="25" Focusable="False" Grid.Column="1" Command="{Binding AddIncomeCategoryCommand, Source={StaticResource vm}}"/>
             </Grid>
         </GroupBox>
         <TextBlock x:Name="textBlock2_Copy" Margin="170,54,522,0" TextWrapping="Wrap" Text="Category:" VerticalAlignment="Top" Height="16" Grid.Column="1"/>
-        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="23" Margin="239,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Grid.Column="1"/>
+        <TextBox x:Name="textBox_Copy" HorizontalAlignment="Left" Height="23" Margin="239,51,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" Grid.Column="1" Text="{Binding IncomeCategoryName, Source={StaticResource vm}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
         <GroupBox x:Name="groupBox_Copy1" Header="Add new Expense Item&#xA;" HorizontalAlignment="Left" Margin="10,148,0,0" VerticalAlignment="Top" Height="239" Width="241" FontWeight="Bold" FontSize="14" Background="#FFFFF5CA" Grid.ColumnSpan="2">
             <Grid HorizontalAlignment="Left" Height="180" Margin="10,-12,0,0" VerticalAlignment="Top" Width="212">
                 <TextBlock x:Name="textBlock1" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Date:" VerticalAlignment="Top" FontWeight="Normal" FontSize="12" Width="30" Margin="0,10,0,0"/>
                 <TextBlock x:Name="textBlock3" HorizontalAlignment="Left" Margin="0,50,0,0" TextWrapping="Wrap" Text="Category:" VerticalAlignment="Top" FontSize="12" FontWeight="Normal"/>
                 <DatePicker x:Name="datepick"  HorizontalAlignment="Left" Margin="72,7,0,0" VerticalAlignment="Top" Width="130"/>
-                <ComboBox x:Name="comboBox" HorizontalAlignment="Left" Margin="72,50,0,0" VerticalAlignment="Top" Width="130" ItemsSource="{Binding ExpenseCategories}">
-                    <ComboBox.DataContext>
-                        <DomainClasses:ViewModel/>
-                    </ComboBox.DataContext>
-                </ComboBox>
                 <TextBlock x:Name="textBlock4" HorizontalAlignment="Left" Margin="0,90,0,0" TextWrapping="Wrap" Text="Description:" VerticalAlignment="Top" FontWeight="Normal" FontSize="12"/>
                 <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="72,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" FontSize="12" FontWeight="Normal"/>
                 <TextBlock x:Name="textBlock5" HorizontalAlignment="Left" Margin="0,131,0,0" TextWrapping="Wrap" Text="Cost:" VerticalAlignment="Top" FontWeight="Normal" FontSize="12"/>
                 <TextBox x:Name="textBox2" HorizontalAlignment="Left" Height="23" Margin="72,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" FontSize="12" FontWeight="Normal"/>
-                <Button x:Name="button4" Content="Add" HorizontalAlignment="Left" Margin="127,169,0,-16" Width="75" Click="button4_Click"/>
+                <Button x:Name="button4" Content="{DynamicResource Add}" HorizontalAlignment="Left" Margin="127,169,0,-16" Width="75" Click="button4_Click"/>
+                <ComboBox x:Name="ExpCategory" HorizontalAlignment="Left" Margin="72,50,0,0" VerticalAlignment="Top" Width="130" ItemsSource="{Binding ExpenseCategories, Source={StaticResource vm}}" />
             </Grid>
         </GroupBox>
         <GroupBox x:Name="groupBox_Copy2" Header="Add new Income Item&#xA;" HorizontalAlignment="Left" Margin="153,148,0,0" VerticalAlignment="Top" Height="239" Width="241" FontWeight="Bold" FontSize="14" Background="#FFFFF5CA" Grid.Column="1">
             <Grid HorizontalAlignment="Left" Height="180" Margin="10,-12,0,0" VerticalAlignment="Top" Width="212">
                 <TextBlock x:Name="textBlock6" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Date:" VerticalAlignment="Top" FontWeight="Normal" FontSize="12" Width="30" Margin="0,10,0,0"/>
                 <TextBlock x:Name="textBlock7" HorizontalAlignment="Left" Margin="0,50,0,0" TextWrapping="Wrap" Text="Category:" VerticalAlignment="Top" FontSize="12" FontWeight="Normal"/>
-                <DatePicker HorizontalAlignment="Left" Margin="72,7,0,0" VerticalAlignment="Top" Width="130"/>
-                <ComboBox x:Name="comboBox1" HorizontalAlignment="Left" Margin="72,50,0,0" VerticalAlignment="Top" Width="130" ItemsSource="{Binding IncomeCategories}">
-                    <ComboBox.DataContext>
-                        <DomainClasses:ViewModel/>
-                    </ComboBox.DataContext>
-                </ComboBox>
+                <DatePicker  x:Name="incomeDate" HorizontalAlignment="Left" Margin="72,7,0,0" VerticalAlignment="Top" Width="130"/>
+                <ComboBox x:Name="categoryCmb" HorizontalAlignment="Left" Margin="72,50,0,0" VerticalAlignment="Top" Width="130" ItemsSource="{Binding IncomeCategories, Source={StaticResource vm}}"/>
                 <TextBlock x:Name="textBlock8" HorizontalAlignment="Left" Margin="0,90,0,0" TextWrapping="Wrap" Text="Description:" VerticalAlignment="Top" FontWeight="Normal" FontSize="12"/>
-                <TextBox x:Name="textBox3" HorizontalAlignment="Left" Height="23" Margin="72,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" FontSize="12" FontWeight="Normal"/>
+                <TextBox x:Name="incomeDesc" HorizontalAlignment="Left" Height="23" Margin="72,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" FontSize="12" FontWeight="Normal"/>
                 <TextBlock x:Name="textBlock9" HorizontalAlignment="Left" Margin="0,131,0,0" TextWrapping="Wrap" Text="Cost:" VerticalAlignment="Top" FontWeight="Normal" FontSize="12"/>
-                <TextBox x:Name="textBox4" HorizontalAlignment="Left" Height="23" Margin="72,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" FontSize="12" FontWeight="Normal"/>
-                <Button x:Name="button4_Copy" Content="Add" HorizontalAlignment="Left" Margin="127,170,0,-17" Width="75" Click="button4_Click"/>
+                <TextBox x:Name="incomeCost" HorizontalAlignment="Left" Height="23" Margin="72,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" FontSize="12" FontWeight="Normal"/>
+                <Button x:Name="addIncome" Content="{DynamicResource Add}" HorizontalAlignment="Left" Margin="127,170,0,-17" Width="75" Click="addIncome_Click" Height="27" VerticalAlignment="Top"/>
             </Grid>
         </GroupBox>
-        <Button x:Name="button5" Content="Show Monthly Expenses and Incomes" Grid.Column="1" HorizontalAlignment="Left" Margin="425,311,0,0" VerticalAlignment="Top" Width="225" FontWeight="Bold" Click="button5_Click"/>
+        <Button x:Name="button5" Content="Show Monthly Expenses and Incomes" Grid.Column="1" HorizontalAlignment="Left" Margin="425,367,0,0" VerticalAlignment="Top" Width="225" FontWeight="Bold" Click="button5_Click"/>
+        <Button Content="Logout" Grid.Column="1" HorizontalAlignment="Left" Margin="899,6,0,0" VerticalAlignment="Top" Width="50" FontWeight="Bold" Cursor="Hand" Click="Button_Click_1" >
+            <Button.Template>
+                <ControlTemplate TargetType="{x:Type Button}">
+                    <ContentPresenter />
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+        <Image Grid.Column="1" HorizontalAlignment="Left" Height="41" Margin="792,0,0,0" VerticalAlignment="Top" Width="44" Source="Resources/Slovakia-Flag-icon.png" MouseDown="bla_PreviewMouseDown">
+            <Image.DataContext>
+                <Properties:Resources/>
+            </Image.DataContext>
+        </Image>
+        <Image Grid.Column="1" HorizontalAlignment="Left" Height="44" Margin="841,0,0,0" VerticalAlignment="Top" Width="44" Source="Resources/United-Kingdom-Flag-1-icon.png" MouseDown="Image_MouseDown">
+            <Image.DataContext>
+                <Properties:Resources/>
+            </Image.DataContext>
+        </Image>
     </Grid>
 </Window>

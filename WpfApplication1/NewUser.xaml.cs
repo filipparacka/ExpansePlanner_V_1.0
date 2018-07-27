@@ -23,6 +23,7 @@ namespace WpfApplication1
         DomainLogic dl = new DomainLogic();
         public NewUser()
         {
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
         }
 

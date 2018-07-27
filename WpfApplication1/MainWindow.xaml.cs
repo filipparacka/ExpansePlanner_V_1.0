@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,14 +25,18 @@ namespace WpfApplication1
         DomainLogic dl = new DomainLogic();
         public MainWindow()
         {
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
         }
 
-        private void button_Click(object sender, RoutedEventArgs e)
+        private async void button_Click(object sender, RoutedEventArgs e)
         {
-            if (dl.ValidateUser(textBox.Text,passwordBox.Password.ToString()))
+            string name = textBox.Text;
+            string password = passwordBox.Password.ToString();
+            grid.IsEnabled = false;
+            Loading.Visibility = Visibility.Visible;
+            if (await dl.ValidateUser(name, password))
             {
-                MessageBox.Show("Connection succesful");
                 Global.UserID = dl.GetUserID(textBox.Text);
                 Global.Username = textBox.Text;
                 Window1 win = new Window1();
@@ -40,9 +45,10 @@ namespace WpfApplication1
             }
             else
             {
+                Loading.Visibility = Visibility.Collapsed;
+                grid.IsEnabled = true;
                 MessageBox.Show("Wrong Username or password!");
             }
-            
         }
 
         private void button1_Click(object sender, RoutedEventArgs e)
@@ -57,6 +63,16 @@ namespace WpfApplication1
             {
                 button_Click(this, null);
             }
+        }
+
+        private void Image_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            StaticClass.SelectCulture("en-EN");
+        }
+
+        private void Image_MouseDown_1(object sender, MouseButtonEventArgs e)
+        {
+            StaticClass.SelectCulture("sk-SK");
         }
     }
 }

@@ -8,7 +8,7 @@ namespace DomainClasses
     public partial class ExpenseEntities : DbContext
     {
         public ExpenseEntities()
-            : base("name=ExpenseEntities")
+            : base("ExpenseEntities")
         {
         }
 

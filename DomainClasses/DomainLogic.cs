@@ -4,16 +4,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.Entity;
+using System.Threading;
 
 namespace DomainClasses
 {
     public class DomainLogic
     {
-        public bool ValidateUser(string name, string password)
+        public async Task<bool> ValidateUser(string name, string password)
         {
             using (var context = new ExpenseEntities())
             {
-                var result = context.Users.Any(x => x.Name == name && x.Password == password);
+                var result = await Task.Run(() => context.Users.AnyAsync(x => x.Name == name && x.Password == password));
                 return result;
             }
         }
@@ -96,6 +97,17 @@ namespace DomainClasses
             }
         }
 
+        public void CreateNewIncome(string description, DateTime date, string category, decimal price)
+        {
+            using (var context = new ExpenseEntities())
+            {
+                IncomeCategory cat = context.Incomecategory.Where(x => x.CategoryName == category).FirstOrDefault();
+                Incomes income = new Incomes() { Description = description, Date = date, Price = price, Category = cat, Users_ID = Global.UserID };
+                context.Incomes.Add(income);
+                context.SaveChanges();
+            }
+        }
+
         public List<ExpenseBO> GetAllExpenses()
         {
             using (var context = new ExpenseEntities())
@@ -106,7 +118,7 @@ namespace DomainClasses
             }
         }
 
-        public List<ExpenseAndIncome> SumMonthlyExpanses()
+        public List<ExpenseAndIncome> SumMonthlyExpensesAndIncomes()
         {
             using (var context = new ExpenseEntities())
             {
